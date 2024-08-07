@@ -53,6 +53,8 @@ return new class extends Migration
             $table->unsignedBigInteger('id_rencana_tempat_tinggal');
             $table->foreign("id_rencana_tempat_tinggal")->references("id_rencana_tempat_tinggal")->on("ref_rencana_tempat_tinggals");
 
+            $table->enum('status', ['Menunggu Verifikasi', 'Terverifikasi', 'Ditolak']);
+
             $table->timestamps();
         });
     }

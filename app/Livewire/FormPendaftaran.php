@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Models\LogStatus;
 use App\Models\Pendaftaran;
 use App\Models\RefAgama;
 use App\Models\RefJalurPendaftaran;
@@ -192,60 +193,18 @@ class FormPendaftaran extends Component
                 'id_sumber_informasi' => $this->SumberInformasiID,
                 'id_rencana_tempat_tinggal' => $this->RencanaTempatTinggalID,
             ]);
+
+            LogStatus::create([
+                'aktivitas' => 'Pendaftaran',
+                'id_entitas' => auth()->user()->id_user,
+                'status' => 'Menunggu Verifikasi',
+                'id_admin' => null,
+                'keterangan' => null,
+            ]);
+
             session()->flash('success', 'Data Pendaftaran Berhasil Diupload');
         }
-
-        // Pendaftaran::create([
-        //     'id_user' => auth()->user()->id_user,
-        //     'nama_lengkap' => $this->nama,
-        //     'nisn' => $this->nisn,
-        //     'nik' => $this->nik,
-        //     'id_jenis_kelamin' => $this->jenisKelaminID,
-        //     'tempat_lahir' => $this->tempatLahir,
-        //     'tanggal_lahir' => $this->tanggalLahir,
-        //     'id_agama' => $this->agamaID,
-        //     'domisili' => $this->domisili,
-        //     'no_whatsapp' => $this->no_wa,
-        //     'nama_orang_tua' => $this->namaOrangTua,
-        //     'no_whatsapp_orang_tua' => $this->noWaOrangTua,
-        //     'asal_sekolah' => $this->asalSekolah,
-        //     'id_penghasilan_orang_tua' => $this->PenghasilanOrangTuaID,
-        //     'id_program_studi' => $this->programStudiID,
-        //     'id_sumber_informasi' => $this->SumberInformasiID,
-        //     'id_jalur_pendaftaran' => $this->JalurPendaftaranID,
-        //     'id_rencana_tempat_tinggal' => $this->RencanaTempatTinggalID,
-        // ]);
-
-        // session()->flash('success', 'Data Pendaftaran Berhasil Diupload');
     }
-
-    // public function store()
-    // {
-    //     $this->validate([
-    //         'nama' => 'required|string',
-    //         'nisn' => 'required|string', 
-    //         'nik' => 'required|string', 
-    //         'jenisKelaminID' => 'required|numeric',
-    //         'tempatLahir' => 'required|string',
-    //         'tanggalLahir' => 'required|date',
-    //         'agamaID' => 'required|numeric',
-    //         'domisili' => 'required|string',
-    //         'no_wa' => 'required|string', 
-    //         'namaOrangTua' => 'required|string',
-    //         'noWaOrangTua' => 'required|string', 
-    //         'asalSekolah' => 'nullable|string',
-    //         'PenghasilanOrangTuaID' => 'required|numeric',
-    //         'programStudiID' => 'required|numeric',
-    //         'JalurPendaftaranID' => 'required|numeric',
-    //         'SumberInformasiID' => 'required|numeric',
-    //         'RencanaTempatTinggalID' => 'required|numeric',
-    //     ]);
-
-
-    //    
-
-
-    // }
 
 
     public function render()

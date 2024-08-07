@@ -110,8 +110,10 @@
                     <p>File yang sudah diunggah:</p>
                     <div>
                         <div>
+                            {{-- @dd($existingFile->bukti_pembayaran) --}}
                             <img src="{{ asset('storage/buktibayar/' . $existingFile->bukti_pembayaran) }}"
                                 style="max-width: 200px; max-height: 200px;">
+
                         </div>
                     </div>
                 </div>

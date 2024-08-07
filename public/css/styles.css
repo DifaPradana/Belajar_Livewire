@@ -17149,3 +17149,13 @@ ul {
 .status-ditolak {
     color: red; /* Warna merah untuk "Ditolak" */
 }
+
+
+.toast {
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.toast.fade-out {
+    opacity: 0;
+}

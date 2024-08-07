@@ -1,4 +1,4 @@
-<div wire:poll>
+<div>
     @if (session()->has('message'))
         <div class="alert alert-success mt-2 auto-dismiss" role="alert">
             {{ session('message') }}
@@ -48,9 +48,9 @@
                         <thead class="text-xs text-gray-700 uppercase bg-gray-50">
                             <tr>
                                 <th class="px-4 py-3">no</th>
-                                <th class="px-4 py-3">nama rekening</th>
-                                <th class="px-4 py-3">metode</th>
-                                <th class="px-4 py-3">bukti pembayaran</th>
+                                <th class="px-4 py-3">nama pendaftar</th>
+                                <th class="px-4 py-3">jalur pendaftaran</th>
+                                <th class="px-4 py-3">rincian</th>
                                 <th class="px-4 py-3">Last update</th>
                                 <th class="px-4 py-3 text-center">Actions</th>
                             </tr>
@@ -100,9 +100,9 @@
                                                     aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
-                                                <img src="{{ asset('storage/buktibayar/' . $item->bukti_pembayaran) }}?v={{ time() }}"
-                                                    alt="Bukti Pembayaran" class="img-fluid">
-
+                                                <img src="{{ asset('storage/buktibayar/' . $item->bukti_pembayaran) }}"
+                                                    alt="Bukti Pembayaran" class="img-fluid"
+                                                    id="image-{{ $item->id_pembayaran }}">
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary"
@@ -114,8 +114,10 @@
                                 <!-- End Modal -->
                             @endforeach
                         </tbody>
+
                     </table>
                 </div>
+
 
 
                 <div class="py-4 px-3">
@@ -136,14 +138,5 @@
             </div>
         </div>
     </section>
-
-
-    <script>
-        document.addEventListener('livewire:load', function() {
-            window.livewire.on('changed', () => {
-                Livewire.emit('refreshComponent');
-            });
-        });
-    </script>
 
 </div>

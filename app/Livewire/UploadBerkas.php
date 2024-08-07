@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Models\LogStatus;
 use App\Models\Pendaftaran;
 use App\Models\RefBerkas;
 use App\Models\UploadBerkas as ModelsUploadBerkas;
@@ -66,7 +67,7 @@ class UploadBerkas extends Component
         $pendaftaran = $this->pendaftaran();
         if (!$pendaftaran) {
             // Tindakan jika pendaftaran tidak ditemukan
-            session()->flash('error', 'Pendaftaran tidak ditemukan, silahkan lengkapi data pendaftaran terlebih dahulu.');
+            session()->flash("error_{$index}", 'Pendaftaran tidak ditemukan, silahkan lengkapi data pendaftaran terlebih dahulu.');
             return;
         }
 
@@ -87,8 +88,17 @@ class UploadBerkas extends Component
                 'berkas' => $pathName,
             ]);
 
-            session()->flash('success', 'Berkas berhasil diunggah.');
+            LogStatus::create([
+                'aktivitas' => 'Upload Berkas',
+                'id_entitas' => auth()->user()->id_user,
+                'status' => 'Menunggu Verifikasi',
+                'id_admin' => null,
+                'keterangan' => null,
+            ]);
+
+            session()->flash("success_{$index}", 'File berhasil diupload.');
         }
+        $this->emit('changed');
     }
 
     public function render()

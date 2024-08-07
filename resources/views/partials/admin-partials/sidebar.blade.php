@@ -38,11 +38,11 @@
                     </a>
                 </li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="{{ route('form-pendaftaran-view') }}" aria-expanded="false">
+                    <a class="sidebar-link" href="{{ route('verifikasi-pendaftar-admin-view') }}" aria-expanded="false">
                         <span>
                             <i class="ti ti-file-description"></i>
                         </span>
-                        <span class="hide-menu">Form Pendaftaran</span>
+                        <span class="hide-menu">Verifikasi Data Pendaftar</span>
                     </a>
                 </li>
                 <li class="sidebar-item">

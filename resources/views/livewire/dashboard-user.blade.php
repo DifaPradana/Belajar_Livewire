@@ -95,7 +95,7 @@
                                             <h6 class="fw-semibold mb-1">{{ $item->aktivitas }}</h6>
                                         </td>
 
-                                        <td wire:poll.visible.5s class="border-bottom-0">
+                                        <td wire:poll.keep-alive class="border-bottom-0">
                                             <div class="d-flex align-items-center gap-2">
                                                 @if ($item->status == 'Menunggu Verifikasi')
                                                     <span

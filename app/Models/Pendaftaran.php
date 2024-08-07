@@ -30,6 +30,7 @@ class Pendaftaran extends Model
         'id_jalur_pendaftaran',
         'id_rencana_tempat_tinggal',
         'id_user',
+        'status',
     ];
 
     protected $hidden = [

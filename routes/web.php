@@ -58,15 +58,7 @@ Route::group(['middleware' => 'admin', 'auth'], function () {
         return view('admin.verifikasi_pembayaran');
     })->name('verifikasi-pembayaran-admin-view');
 
-    // Route::get('/pendaftar', function () {
-    //     return view('admin.pendaftar');
-    // })->name('pendaftar-view');
-
-    // Route::get('/pendaftar/{id}', function ($id) {
-    //     return view('admin.detailpendaftar', ['id' => $id]);
-    // })->name('detail-pendaftar-view');
-
-    // Route::get('/pembayaran/{id}', function ($id) {
-    //     return view('admin.detailpembayaran', ['id' => $id]);
-    // })->name('detail-pembayaran-view');
+    Route::get('/pendaftaran-admin', function () {
+        return view('admin.verifikasi_pendaftaran');
+    })->name('verifikasi-pendaftar-admin-view');
 });

@@ -19,7 +19,6 @@ class UploadPembayaran extends Component
     public $formFile;
 
 
-
     #[Computed()]
     public function metodes()
     {
@@ -86,7 +85,8 @@ class UploadPembayaran extends Component
         }
 
         // Menyimpan file ke direktori yang diinginkan
-        $imageName = 'buktibayar_' . auth()->user()->id_user . '.' . $this->formFile->extension();
+        $extension = $this->formFile->getClientOriginalExtension();
+        $imageName = 'buktibayar_' . auth()->user()->id_user . '.' . $extension;
         $this->formFile->storeAs('public/buktibayar', $imageName, ['overwrite' => true]);
 
         // Cari data pembayaran yang sudah ada
@@ -118,17 +118,12 @@ class UploadPembayaran extends Component
                 'status' => 'Menunggu Verifikasi',
                 'id_admin' => null,
                 'keterangan' => null,
+
             ]);
 
             session()->flash('success', 'Bukti Pembayaran Berhasil Diupload');
         }
-
-        // $this->render();
-        // // Flash message
-        // session()->flash('success', 'Bukti Pembayaran Berhasil Diupload');
     }
-
-
 
 
 

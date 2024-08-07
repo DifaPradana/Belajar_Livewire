@@ -3,25 +3,22 @@
 namespace App\Livewire;
 
 use App\Models\LogStatus;
-use App\Models\Pembayaran;
-use Livewire\Attributes\On;
+use App\Models\Pendaftaran;
 use Livewire\Component;
 
-class AdminVerifikasiPembayaran extends Component
+class AdminVerifikasiPendaftaran extends Component
 {
-    public $pembayarans;
-    public $statusForm = [];
-    public $selectedPembayaranId;
+    public $pendaftarans;
+    public $existingPendaftaran;
 
-    protected $listeners = ['refreshComponent' => '$refresh'];
+
 
     public function mount()
     {
-        $this->pembayarans = Pembayaran::all();
+        $this->pendaftarans = Pendaftaran::all();
     }
 
-
-    public function changeStatus(Pembayaran $item, $status)
+    public function changeStatus(Pendaftaran $item, $status)
     {
         // dd($item);
         // dd($status);
@@ -32,7 +29,7 @@ class AdminVerifikasiPembayaran extends Component
         ]);
 
         // Update the status in the log_statuses table
-        $logStatus = LogStatus::where('aktivitas', 'Pembayaran')
+        $logStatus = LogStatus::where('aktivitas', 'Pendaftaran')
             ->where('id_entitas', $idPendaftar)
             ->first();
 
@@ -43,16 +40,11 @@ class AdminVerifikasiPembayaran extends Component
             ]);
         }
 
-        $this->pembayarans = Pembayaran::all();
         session()->flash('message', 'Status pembayaran berhasil diubah');
     }
 
-
-
     public function render()
     {
-        return view('livewire.admin-verifikasi-pembayaran', [
-            'pembayarans' => Pembayaran::all(),
-        ]);
+        return view('livewire.admin-verifikasi-pendaftaran');
     }
 }
